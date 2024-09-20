@@ -1,8 +1,5 @@
 ![PostgreSQL and pgAdmin Logo](/assets/setup-postgresql-pgadmin-wsl2.png)
 
-Here's the revised version with your GitHub repository included as a reference:
-
----
 
 # 🚀 **Setting Up PostgreSQL and pgAdmin on Ubuntu (WSL2) for Web Developers**
 
