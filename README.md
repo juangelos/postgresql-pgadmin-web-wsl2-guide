@@ -1,9 +1,27 @@
 ![PostgreSQL and pgAdmin Logo](/assets/setup-postgresql-pgadmin-wsl2.png)
 
+Here's the revised version with your GitHub repository included as a reference:
+
+---
 
 # 🚀 **Setting Up PostgreSQL and pgAdmin on Ubuntu (WSL2) for Web Developers**
 
 Welcome to the ultimate guide for installing **PostgreSQL** and **pgAdmin** on **Ubuntu (WSL2)**, all while running on Windows! 🎉 This guide walks you through every step, making sure your database environment is up and running smoothly, with a little fun along the way! 🌟
+
+> **GitHub Reference**: For the full source code and configuration files related to this guide, check out the [GitHub Repository](https://github.com/a99divx/postgresql-pgadmin-web-wsl2-guide/tree/main).
+
+> 🚀 **Ready to supercharge your Windows 11 development environment?** Fork this repository to keep track of your progress and customize your setup! 
+> 
+> [![Fork the Repo](https://img.shields.io/github/forks/a99divx/postgresql-pgadmin-web-wsl2-guide?style=social)](https://github.com/a99divx/postgresql-pgadmin-web-wsl2-guide/fork)
+> [![Star the Repo](https://img.shields.io/github/stars/a99divx/postgresql-pgadmin-web-wsl2-guide?style=social)](https://github.com/a99divx/postgresql-pgadmin-web-wsl2-guide)
+> 
+> 📝 **Track Your Progress**: Use the [Issues](https://github.com/a99divx/postgresql-pgadmin-web-wsl2-guide/issues) tab to create a checklist of tasks as you work through this guide.
+> 
+> 🔧 **Customize Your Setup**: Share your own tips and tricks by [contributing](https://github.com/a99divx/postgresql-pgadmin-web-wsl2-guide/blob/main/CONTRIBUTING.md) to this guide!
+> 
+> 💡 **Get Help**: Join our [Discussions](https://github.com/a99divx/postgresql-pgadmin-web-wsl2-guide/discussions) to ask questions and share your experiences with other developers.
+
+
 
 ## 📚 **Table of Contents**
 
@@ -190,9 +208,7 @@ You can now access pgAdmin by navigating to:
 ```
 http://127.0.0.1/pgadmin4
 ```
-
-If you can't access the web version of pgAdmin, you can try the following link instead:
-
+or
 ```
 http://localhost/pgadmin4
 ```
@@ -208,7 +224,7 @@ Let’s make sure everything is working perfectly.
 1. **Access pgAdmin**: Open your browser and navigate to `http://127.0.0.1/pgadmin4` or `http://localhost/pgadmin4`.
 2. **Login**: Use the admin credentials you just created.
 3. **Connect to PostgreSQL**: Inside pgAdmin, create a new server connection:
-   - **Hostname**: `localhost`
+   - **Hostname**: `localhost` or `127.0.0.1`
    - **Port**: `5436` (for the new cluster you created)
    - **Username**: `postgres`
    - **Password**: The password you set earlier.
@@ -234,14 +250,13 @@ You’ve just set up a fully functional **PostgreSQL** and **pgAdmin (web versio
 
 If you found this guide helpful, feel free to share it with fellow developers, or contribute to enhancing this guide on GitHub! 🙌
 
+> **GitHub Reference**: For the full source code and configuration files related to this guide, check out the [GitHub Repository](https://github.com/a99divx/postgresql-pgadmin-web-wsl2-guide/tree/main).
+
 ---
 
 ## 📚 **Additional Resources**
 
 - [PostgreSQL Official Documentation](https://www.postgresql.org/docs/)
 - [pgAdmin Documentation](https://www.pgadmin.org/docs/)
-- [WSL2 Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
+- [WSL 2 Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
 
----
-
-Now go build something amazing with PostgreSQL! 💻✨
