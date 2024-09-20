@@ -5,7 +5,6 @@
 
 Welcome to the ultimate guide for installing **PostgreSQL** and **pgAdmin** on **Ubuntu (WSL2)**, all while running on Windows! 🎉 This guide walks you through every step, making sure your database environment is up and running smoothly, with a little fun along the way! 🌟
 
-> **GitHub Reference**: For the full source code and configuration files related to this guide, check out the [GitHub Repository](https://github.com/a99divx/postgresql-pgadmin-web-wsl2-guide/tree/main).
 
 > 🚀 **Ready to supercharge your Windows 11 development environment?** Fork this repository to keep track of your progress and customize your setup! 
 > 
@@ -247,7 +246,6 @@ You’ve just set up a fully functional **PostgreSQL** and **pgAdmin (web versio
 
 If you found this guide helpful, feel free to share it with fellow developers, or contribute to enhancing this guide on GitHub! 🙌
 
-> **GitHub Reference**: For the full source code and configuration files related to this guide, check out the [GitHub Repository](https://github.com/a99divx/postgresql-pgadmin-web-wsl2-guide/tree/main).
 
 ---
 
