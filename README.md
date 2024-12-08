@@ -81,7 +81,7 @@ Now, install PostgreSQL along with some additional utilities:
 sudo apt-get install postgresql postgresql-contrib
 ```
 
-👨‍💻 **What’s Happening?**
+👨‍💻 **What’s Happening?**  
 - `postgresql`: The core PostgreSQL database.
 - `postgresql-contrib`: Extra useful tools and extensions (like `pgcrypto`, `adminpack`, etc.).
 
