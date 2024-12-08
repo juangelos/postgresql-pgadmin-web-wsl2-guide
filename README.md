@@ -94,6 +94,7 @@ psql --version
 ```
 
 ✅ You should see output like this:
+
 ```
 psql (PostgreSQL) 14.13 (Ubuntu 14.13-0ubuntu0.22.04.1)
 ```
