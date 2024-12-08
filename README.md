@@ -56,7 +56,7 @@ If you haven’t installed WSL2 yet, here’s a quick way to do it:
    ```bash
    wsl --install
    ```
-       
+
 2. Download **Ubuntu** from the **Microsoft Store** and launch it to complete the setup (create a username and password).
 
 ---
