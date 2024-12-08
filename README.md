@@ -53,11 +53,10 @@ Before diving in, make sure you have the following:
 If you haven’t installed WSL2 yet, here’s a quick way to do it:
 
 1. Open **PowerShell** as Administrator and run:
-    
-    ```bash
-    wsl --install
-    ```
-    
+   ```bash
+   wsl --install
+   ```
+       
 2. Download **Ubuntu** from the **Microsoft Store** and launch it to complete the setup (create a username and password).
 
 ---
@@ -83,7 +82,6 @@ sudo apt-get install postgresql postgresql-contrib
 ```
 
 👨‍💻 **What’s Happening?**
-
 - `postgresql`: The core PostgreSQL database.
 - `postgresql-contrib`: Extra useful tools and extensions (like `pgcrypto`, `adminpack`, etc.).
 
@@ -295,10 +293,10 @@ Let’s make sure everything is working perfectly.
 1. **Access pgAdmin**: Open your browser and navigate to `http://127.0.0.1/pgadmin4` or `http://localhost/pgadmin4`.
 2. **Login**: Use the admin credentials you just created.
 3. **Connect to PostgreSQL**: Inside pgAdmin, create a new server connection:
-    - **Hostname**: `localhost` or `127.0.0.1`
-    - **Port**: `5436` (for the new cluster you created)
-    - **Username**: `postgres`
-    - **Password**: The password you set earlier.
+   - **Hostname**: `localhost` or `127.0.0.1`
+   - **Port**: `5436` (for the new cluster you created)
+   - **Username**: `postgres`
+   - **Password**: The password you set earlier.
 
 🎉 Congratulations! You now have **PostgreSQL** and **pgAdmin** fully configured and ready to use on **WSL2**!
 
@@ -321,6 +319,7 @@ You’ve just set up a fully functional **PostgreSQL** and **pgAdmin (web versio
 
 If you found this guide helpful, feel free to share it with fellow developers, or contribute to enhancing this guide on GitHub! 🙌
 
+
 ---
 
 ## 📚 **Additional Resources**
@@ -328,3 +327,4 @@ If you found this guide helpful, feel free to share it with fellow developers, o
 - [PostgreSQL Official Documentation](https://www.postgresql.org/docs/)
 - [pgAdmin Documentation](https://www.pgadmin.org/docs/)
 - [WSL 2 Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
+
