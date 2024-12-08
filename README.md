@@ -53,10 +53,11 @@ Before diving in, make sure you have the following:
 If you haven’t installed WSL2 yet, here’s a quick way to do it:
 
 1. Open **PowerShell** as Administrator and run:
-   ```bash
-   wsl --install
-   ```
-
+    
+    ```bash
+    wsl --install
+    ```
+    
 2. Download **Ubuntu** from the **Microsoft Store** and launch it to complete the setup (create a username and password).
 
 ---
@@ -81,7 +82,8 @@ Now, install PostgreSQL along with some additional utilities:
 sudo apt-get install postgresql postgresql-contrib
 ```
 
-👨‍💻 **What’s Happening?**  
+👨‍💻 **What’s Happening?**
+
 - `postgresql`: The core PostgreSQL database.
 - `postgresql-contrib`: Extra useful tools and extensions (like `pgcrypto`, `adminpack`, etc.).
 
@@ -94,7 +96,6 @@ psql --version
 ```
 
 ✅ You should see output like this:
-
 ```
 psql (PostgreSQL) 14.13 (Ubuntu 14.13-0ubuntu0.22.04.1)
 ```
@@ -107,22 +108,22 @@ Boom! PostgreSQL is installed and ready to go! 🎉
 
 PostgreSQL uses **clusters** to manage databases. We’re going to create a new cluster that runs on a different port, so you can keep things organized.
 
-### Step 1: Create a New Cluster
+### Step 1: Create a New Cluster (the Default Cluster named ‘main’ is running on port 5432)
 
 Run the following command to create a cluster on port `5436`:
 
 ```bash
-sudo pg_createcluster 14 main5436 --port=5436
+sudo pg_createcluster 16 main5436 --port=5436
 ```
 
-This will create a new cluster for **PostgreSQL version 14**. Clusters are isolated instances of PostgreSQL.
+This will create a new cluster for **PostgreSQL version 16**. Clusters are isolated instances of PostgreSQL.
 
 ### Step 2: Start the Cluster
 
 Next, start your new cluster:
 
 ```bash
-sudo service postgresql@14-main5436 start
+sudo service postgresql@16-main5436 start
 ```
 
 ### Step 3: Check Cluster Status
@@ -130,7 +131,7 @@ sudo service postgresql@14-main5436 start
 Let’s check if everything is running smoothly:
 
 ```bash
-sudo service postgresql@14-main5436 status
+sudo service postgresql@16-main5436 status
 ```
 
 🎉 **Success!** If you see the output saying `Active: active (running)`, your cluster is live and ready to handle databases.
@@ -141,7 +142,9 @@ Switch to the PostgreSQL user and set a password for your main database user:
 
 ```bash
 sudo -i -u postgres
-psql
+
+## run with the -p parameter to connect to the NEW cluster
+psql -p 5436
 ```
 
 Then set the password for the `postgres` user:
@@ -151,6 +154,86 @@ ALTER USER postgres PASSWORD 'yourpassword';
 ```
 
 Exit the PostgreSQL prompt by typing `\q`.
+
+### Step 5: Verify that you can login with your `postgres` User:
+
+```bash
+exit  # go back to your default shell, or reopen your terminal
+
+## run with the -p parameter to connect to the NEW cluster
+psql -h localhost -U postgres -p 5436
+
+# it should ask you for the new password and you should be able to login.
+```
+
+Exit the PostgreSQL prompt by typing `\q`.
+
+### Step 5:  🚦 Dealing with the Default Cluster
+By default, when you install PostgreSQL, it creates an auto-start cluster named `main` on port `5432`. This cluster is automatically managed by your system’s init process, meaning it starts when your system boots.
+
+If you’ve created additional clusters (like the one on port `5436`), it’s helpful to know how to manage them:
+
+**Checking Active Clusters**
+To see all the clusters currently configured (and whether they’re running):
+
+```bash
+pg_lsclusters
+```
+You’ll see each cluster’s PostgreSQL version, name, port, and status.
+
+
+1. **Stop the Default Cluster**:
+    
+    ```bash
+    sudo pg_ctlcluster 16 main stop
+    ```
+    
+2. **Edit the start.conf File**:
+    
+    Open the **`start.conf`** file for the default cluster:
+    
+    ```bash
+    sudo nano /etc/postgresql/16/main/start.conf
+    ```
+    
+    If you see the word **`auto`** in that file, change it to **`manual`**.
+    
+3. **Save and Close**: Press **`Ctrl+O`** to save, then **`Ctrl+X`** to exit.
+
+Now, when you start/restart PostgreSQL via **`sudo service postgresql start`**, the **`16/main`** cluster won’t start automatically. To start it manually at any time, just run:
+
+```bash
+sudo pg_ctlcluster 16 main start
+```
+
+
+### Managing Clusters
+
+Use the following commands to manage your clusters:
+
+- **Start a Cluster**:  
+  ```bash
+  sudo pg_ctlcluster <version> <cluster_name> start
+  ```
+  
+- **Stop a Cluster**:  
+  ```bash
+  sudo pg_ctlcluster <version> <cluster_name> stop
+  ```
+
+- **Restart a Cluster**:  
+  ```bash
+  sudo pg_ctlcluster <version> <cluster_name> restart
+  ```
+
+- **Reload Configuration** (without restarting):  
+  ```bash
+  sudo pg_ctlcluster <version> <cluster_name> reload
+  ```
+
+Now you have full control over your clusters—start only what you need, stop what you don’t, and keep your environment lean and efficient!
+
+
 
 ---
 
@@ -199,15 +282,7 @@ During setup, you’ll be prompted to:
 
 The setup script will configure Apache to serve pgAdmin. When prompted to restart Apache, press `y`.
 
-You can now access pgAdmin by navigating to:
-
-```
-http://127.0.0.1/pgadmin4
-```
-or
-```
-http://localhost/pgadmin4
-```
+You can now access pgAdmin by navigating to  http://127.0.0.1/pgadmin4   or   http://localhost/pgadmin4
 
 🎉 You’re now able to manage your PostgreSQL databases using pgAdmin, right from your browser! 🚀
 
@@ -220,10 +295,10 @@ Let’s make sure everything is working perfectly.
 1. **Access pgAdmin**: Open your browser and navigate to `http://127.0.0.1/pgadmin4` or `http://localhost/pgadmin4`.
 2. **Login**: Use the admin credentials you just created.
 3. **Connect to PostgreSQL**: Inside pgAdmin, create a new server connection:
-   - **Hostname**: `localhost` or `127.0.0.1`
-   - **Port**: `5436` (for the new cluster you created)
-   - **Username**: `postgres`
-   - **Password**: The password you set earlier.
+    - **Hostname**: `localhost` or `127.0.0.1`
+    - **Port**: `5436` (for the new cluster you created)
+    - **Username**: `postgres`
+    - **Password**: The password you set earlier.
 
 🎉 Congratulations! You now have **PostgreSQL** and **pgAdmin** fully configured and ready to use on **WSL2**!
 
@@ -246,7 +321,6 @@ You’ve just set up a fully functional **PostgreSQL** and **pgAdmin (web versio
 
 If you found this guide helpful, feel free to share it with fellow developers, or contribute to enhancing this guide on GitHub! 🙌
 
-
 ---
 
 ## 📚 **Additional Resources**
@@ -254,4 +328,3 @@ If you found this guide helpful, feel free to share it with fellow developers, o
 - [PostgreSQL Official Documentation](https://www.postgresql.org/docs/)
 - [pgAdmin Documentation](https://www.pgadmin.org/docs/)
 - [WSL 2 Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
-
